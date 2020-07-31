@@ -1,0 +1,17 @@
+
+<div class="container">
+    <div class="row row-auth">
+        <p *ngIf="user; else notLogged">User successfully authorized!</p>
+        <p *ngIf="user">Hello {{user?.email}} </p>
+        <button class="button" *ngIf="user" (click)="signOut()">Logout</button>
+    </div>
+    <ng-template #notLogged>
+        <div class="row row-unauth">
+            <h3>Sorry, you shoud logged in!</h3>
+            <form>
+                <button class="button" (click)="signIn()">Login</button>
+            </form>
+        </div>
+    </ng-template>
+</div>
+    

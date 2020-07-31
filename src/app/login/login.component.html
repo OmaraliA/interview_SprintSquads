@@ -1,0 +1,31 @@
+<div class="container">
+    <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+        <h1>Login</h1>
+        <p>{{message}}</p>
+        <div class="form-group">
+            <input type="text" 
+                name="email" 
+                class="form-control" 
+                [(ngModel)]="user.email"
+                placeholder="Email"
+                required/>
+        </div>
+        <div class="form-group">
+            <input type="password" 
+                name="password" 
+                class="form-control"
+                required 
+                [(ngModel)]="user.password"
+                minlength="8"
+                maxlength="24"
+                (input)="validateField()"
+                (keyup)="validateField()"
+                (change)="validateField()"
+                placeholder="Password"
+                [type]="showPassword ? 'text' : 'password'"/>
+            <span (click)="togglePassword()" class="password">show password</span>
+        </div>
+        <span *ngIf="invalid" class="error">Password length should be at least 8</span>
+        <button type="submit" class="" [disabled]="!loginForm.form.valid">Login</button>
+    </form>
+</div>
